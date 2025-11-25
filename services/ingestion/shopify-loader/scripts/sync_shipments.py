@@ -1,0 +1,1 @@
+# Sync inventory from Shopify to datalake

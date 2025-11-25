@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+*.tsbuildinfo
+backend/.venv
+backend/__pycache__/
+backend/**/*.pyc
+tools/
+public/*.jpg
+public/*.webp

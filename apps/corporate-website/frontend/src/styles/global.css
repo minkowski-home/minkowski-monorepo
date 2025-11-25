@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Chivo:wght@400;600;700&display=swap");
+
+:root {
+  color-scheme: light;
+  font-family: "Barlow", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #f3f2ec;
+  color: #201818;
+
+  --color-primary: #8d2729;
+  --color-background: #f3f2ec;
+  --color-surface: #ffffff;
+  --color-text: #201818;
+  --color-muted: #67605c;
+
+  --font-heading: "Chivo", "Chivo Bold", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --space-lg: 3rem;
+  --space-md: 1.5rem;
+  --space-sm: 0.75rem;
+  --max-width: 1080px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.question-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.question-card:hover,
+.question-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.14);
+}
+
+.likert-option {
+  cursor: pointer;
+  transition: color 120ms ease;
+}
+
+.likert-option input[type="radio"] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 2px solid rgba(32, 24, 24, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background-color 140ms ease;
+}
+
+.likert-option input[type="radio"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(141, 39, 41, 0.22);
+}
+
+.likert-option input[type="radio"]::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 140ms ease, transform 140ms ease;
+  transform: scale(0.4);
+}
+
+.likert-option input[type="radio"]:checked {
+  border-color: var(--color-primary);
+  background-color: rgba(141, 39, 41, 0.08);
+}
+
+.likert-option input[type="radio"]:checked::after {
+  background-color: var(--color-primary);
+  transform: scale(1);
+}
+
+.likert-option span {
+  transition: color 140ms ease;
+}
+
+.likert-option:hover span,
+.likert-option input[type="radio"]:focus-visible + span {
+  color: var(--color-primary);
+}
+
+.choice-card {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 140ms ease;
+  cursor: pointer;
+}
+
+.choice-card input[type="radio"] {
+  margin-top: 0.2rem;
+  margin-right: 0.75rem;
+  transform: scale(1.2);
+  accent-color: var(--color-primary);
+}
+
+.choice-card:hover,
+.choice-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.14);
+  border-color: rgba(141, 39, 41, 0.35);
+}

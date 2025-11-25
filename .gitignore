@@ -1,0 +1,38 @@
+# Node / frontend artifacts
+node_modules/
+dist/
+.turbo/
+.cache/
+.pnpm-store/
+*.tsbuildinfo
+
+# Python / backend artifacts
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.env
+*.db
+*.sqlite
+
+# Logs and coverage
+*.log
+coverage/
+.coverage
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local samples and generated data should stay out of git
+samples/*
+!samples/README.md
+!samples/.gitignore

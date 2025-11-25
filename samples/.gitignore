@@ -1,0 +1,4 @@
+# Ignore all sample data by default; keep README tracked.
+*
+!.gitignore
+!README.md

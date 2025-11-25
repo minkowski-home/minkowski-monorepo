@@ -1,0 +1,20 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "lint": {
+      "cache": true
+    },
+    "test": {
+      "cache": true,
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  }
+}
