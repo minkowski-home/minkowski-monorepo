@@ -1,0 +1,2 @@
+# Define image resize settings (max dimensions, quality) for Shopify product assets.
+# Fill these values per environment before running resize_images.py.

@@ -1,3 +1,5 @@
+"""FastAPI application for the Design Sense test backend."""
+
 import os
 
 from dotenv import load_dotenv
@@ -13,6 +15,7 @@ app = FastAPI(title="Design Sense Test API", version="0.1.0")
 
 
 def _allowed_origins() -> list[str]:
+    """Parse ALLOWED_ORIGINS into a list for CORS configuration."""
     raw = os.getenv("ALLOWED_ORIGINS", "")
     parsed = [origin.strip() for origin in raw.split(",") if origin.strip()]
     return parsed or ["*"]
@@ -29,16 +32,19 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup() -> None:
+    """Warm the MongoDB client on application startup."""
     await get_client()
 
 
 @app.on_event("shutdown")
 async def shutdown() -> None:
+    """Tear down the MongoDB client on shutdown."""
     await close_client()
 
 
 @app.get("/health", tags=["health"])
 async def healthcheck() -> dict[str, str]:
+    """Lightweight liveness probe."""
     return {"status": "ok"}
 
 

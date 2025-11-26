@@ -1,3 +1,5 @@
+"""Routes for the Design Sense assessment API."""
+
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -37,6 +39,7 @@ router = APIRouter(prefix="/api/design-test", tags=["design-test"])
 
 
 def _deserialize_question(document: dict[str, Any]) -> QuestionDocument:
+    """Convert a raw MongoDB document into a strongly typed QuestionDocument."""
     payload = dict(document)
     object_id = payload.pop("_id", None)
     if object_id is not None:
@@ -45,6 +48,7 @@ def _deserialize_question(document: dict[str, Any]) -> QuestionDocument:
 
 
 def _question_to_public(question: QuestionDocument) -> PublicQuestion:
+    """Strip private fields to expose a public-friendly question payload."""
     public_images = [
         PublicImage(
             imageId=image.imageId,
@@ -62,6 +66,7 @@ def _question_to_public(question: QuestionDocument) -> PublicQuestion:
 
 
 async def _fetch_supplemental_docs() -> dict[int, SelectionQuestionDocument | BoostQuestionDocument]:
+    """Load supplemental selection/boost questions keyed by question number."""
     collection = await get_supplemental_questions_collection()
     supplemental: dict[int, SelectionQuestionDocument | BoostQuestionDocument] = {}
     async for raw in collection.find():
@@ -77,6 +82,7 @@ async def _fetch_supplemental_docs() -> dict[int, SelectionQuestionDocument | Bo
 
 
 def _selection_to_public(doc: SelectionQuestionDocument) -> PublicSelectionQuestion:
+    """Expose a selection question in the public API schema."""
     return PublicSelectionQuestion(
         questionNumber=doc.questionNumber,
         kind="selection",
@@ -86,6 +92,7 @@ def _selection_to_public(doc: SelectionQuestionDocument) -> PublicSelectionQuest
 
 
 def _boost_to_public(doc: BoostQuestionDocument) -> PublicBoostQuestion:
+    """Expose a boost question in the public API schema."""
     return PublicBoostQuestion(
         questionNumber=doc.questionNumber,
         kind="boost",
@@ -96,6 +103,7 @@ def _boost_to_public(doc: BoostQuestionDocument) -> PublicBoostQuestion:
 
 @router.get("/questions", response_model=list[PublicQuestion])
 async def list_questions() -> list[PublicQuestion]:
+    """Return all assessment questions in display order."""
     collection = await get_questions_collection()
     cursor = collection.find().sort("questionNumber", 1)
     questions: list[PublicQuestion] = []
@@ -107,6 +115,7 @@ async def list_questions() -> list[PublicQuestion]:
 
 @router.get("/supplemental", response_model=list[PublicSelectionQuestion | PublicBoostQuestion])
 async def list_supplemental_questions() -> list[PublicSelectionQuestion | PublicBoostQuestion]:
+    """Return supplemental questions (selection + boost) in order."""
     docs = await _fetch_supplemental_docs()
     result: list[PublicSelectionQuestion | PublicBoostQuestion] = []
     for question_number in sorted(docs.keys()):
@@ -119,6 +128,7 @@ async def list_supplemental_questions() -> list[PublicSelectionQuestion | Public
 
 
 async def _ensure_applicant(applicant: ApplicantInput, *, now: datetime) -> tuple[dict[str, Any] | None, int]:
+    """Fetch an existing applicant by email and return their next attempt number."""
     applicants = await get_applicants_collection()
     normalized_email = applicant.email.lower()
     existing = await applicants.find_one({"email": normalized_email})
@@ -134,6 +144,7 @@ async def _update_applicant(
     *,
     now: datetime,
 ) -> None:
+    """Upsert applicant metadata with the latest attempt information."""
     applicants = await get_applicants_collection()
     normalized_email = applicant.email.lower()
     update_payload = {
@@ -157,15 +168,18 @@ async def _update_applicant(
 
 
 def _compute_band(score: float) -> SubmissionBand:
+    """Translate a score into a qualitative band."""
     return SubmissionBand.from_score(score)
 
 
 def _mean(values: list[float]) -> float:
+    """Safe mean helper that tolerates empty lists."""
     return float(mean(values)) if values else 0.0
 
 
 @router.post("/submit", response_model=SubmissionResult, status_code=status.HTTP_201_CREATED)
 async def submit_results(payload: TestSubmissionRequest) -> SubmissionResult:
+    """Compute the applicant's score, persist the attempt, and return the summary."""
     now = datetime.now(timezone.utc)
     normalized_email = payload.applicant.email.lower()
     attempts_collection = await get_attempts_collection()

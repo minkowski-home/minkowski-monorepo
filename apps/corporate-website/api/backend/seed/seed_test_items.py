@@ -1,3 +1,5 @@
+"""Seed MongoDB collections with design test questions, images, and supplemental metadata."""
+
 import asyncio
 import re
 from collections import defaultdict

@@ -1,0 +1,2 @@
+# Configuration placeholder for analytics platform (warehouse, creds, schedules).
+# Populate with per-environment settings before deploying pipelines.

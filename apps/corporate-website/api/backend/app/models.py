@@ -1,7 +1,9 @@
+"""Pydantic models for the Design Sense assessment domain."""
+
 from enum import Enum
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field # type: ignore
+from pydantic import BaseModel, ConfigDict, EmailStr, Field  # type: ignore
 
 
 class QuestionType(str, Enum):
@@ -180,6 +182,7 @@ class SubmissionBand(str, Enum):
 
     @classmethod
     def from_score(cls, score: float) -> "SubmissionBand":
+        """Map a closeness score into a qualitative band."""
         if score >= 0.85:
             return cls.EXCELLENT
         if score >= 0.70:
