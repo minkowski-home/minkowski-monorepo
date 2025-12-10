@@ -1,0 +1,1 @@
+# Do not run this manually, setup an Airflow DAG to run the traffic simulator bots.
