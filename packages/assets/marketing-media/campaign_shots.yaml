@@ -1,0 +1,9 @@
+shots:
+  - slug: warm-living-room
+    format: webp
+    usage: hero
+    cdn_url: https://cdn.example.com/minkowski/warm-living-room.webp
+  - slug: tabletop-flatlay
+    format: jpg
+    usage: paid_social
+    cdn_url: https://cdn.example.com/minkowski/tabletop-flatlay.jpg

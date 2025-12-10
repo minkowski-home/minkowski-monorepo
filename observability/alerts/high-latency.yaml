@@ -1,0 +1,4 @@
+alert: corporate-api-high-latency
+expr: p95_request_duration_ms > 750 for 5m
+severity: page
+runbook: ../../docs/runbooks/api-latency.md

@@ -1,0 +1,9 @@
+# Declarative reference for data platform endpoints; replaces the README.
+local:
+  warehouse: postgresql://postgres:postgres@localhost:5432/minkowski
+  lake_bucket: gs://minkowski-local-lake
+  bigquery_project: minkowski-local
+
+staging:
+  warehouse: bigquery://minkowski-stg/datasets/core
+  lake_bucket: gs://minkowski-staging-lake

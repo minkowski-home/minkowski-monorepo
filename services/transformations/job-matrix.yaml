@@ -1,0 +1,5 @@
+jobs:
+  - name: dbt-core
+    path: services/transformations/dbt-project
+  - name: ml-pipelines
+    path: services/transformations/ml-pipelines

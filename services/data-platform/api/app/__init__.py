@@ -1,0 +1,1 @@
+"""FastAPI metadata service placeholder."""

@@ -1,0 +1,7 @@
+jobs:
+  - name: meta-ads
+    schedule: '*/30 * * * *'
+    target_table: raw_meta_ads
+  - name: shopify-orders
+    schedule: '0 * * * *'
+    target_table: raw_shopify_orders

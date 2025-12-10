@@ -1,0 +1,17 @@
+name: design-your-space
+stack:
+  frontend: apps/design-your-space/frontend
+  api: apps/design-your-space/api/backend
+  assets: packages/assets/glb-models
+milestones:
+  - title: "Immersive room planner"
+    status: shipped
+    notes: "React + Three.js client renders curated GLB models."
+  - title: "API backed save states"
+    status: in_progress
+    notes: "FastAPI persists layouts + mood board metadata."
+operations:
+  default_env: local
+  ports:
+    frontend: 5174
+    api: 8001

@@ -1,0 +1,5 @@
+suites:
+  - name: contracts
+    path: tests/contracts
+  - name: e2e
+    path: tests/e2e

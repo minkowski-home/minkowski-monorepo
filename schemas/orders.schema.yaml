@@ -1,0 +1,12 @@
+version: 1
+name: orders
+columns:
+  - name: order_id
+    type: STRING
+    description: Primary key referencing storefront orders.
+  - name: customer_id
+    type: STRING
+  - name: total
+    type: NUMERIC
+  - name: status
+    type: STRING

@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  metadata-api:
+    build:
+      context: ./api
+      dockerfile: ../../tools/docker/base.Dockerfile
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+    ports:
+      - "8080:8080"
+  orchestrator:
+    image: apache/airflow:2.9.0
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - ./orchestrator/dags:/opt/airflow/dags

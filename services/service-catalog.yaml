@@ -1,0 +1,12 @@
+- name: data-platform
+  type: platform
+  owners: [data]
+  path: services/data-platform
+- name: ingestion
+  type: data
+  owners: [data]
+  path: services/ingestion
+- name: transformations
+  type: ml
+  owners: [ml]
+  path: services/transformations

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "order.v1",
+  "description": "Shared contract between storefront API and analytics lake.",
+  "type": "object",
+  "required": ["id", "customer_id", "status", "total"],
+  "properties": {
+    "id": {"type": "string", "description": "Order UUID."},
+    "customer_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["pending", "paid", "fulfilled", "cancelled"]},
+    "currency": {"type": "string", "default": "USD"},
+    "total": {"type": "number", "minimum": 0},
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sku", "quantity", "price"],
+        "properties": {
+          "sku": {"type": "string"},
+          "quantity": {"type": "integer", "minimum": 1},
+          "price": {"type": "number", "minimum": 0}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+modules:
+  terraform: infra/terraform
+  kubernetes: infra/k8s
+  github: infra/github
+notes: |
+  This file replaces the placeholder README and documents where IaC artifacts
+  live until each folder contains full configurations.

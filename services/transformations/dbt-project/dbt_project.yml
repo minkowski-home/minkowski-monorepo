@@ -1,0 +1,6 @@
+name: minkowski_transformations
+version: "1.0.0"
+profile: default
+model-paths: ["models"]
+seed-paths: ["seeds"]
+analysis-paths: ["analysis"]
