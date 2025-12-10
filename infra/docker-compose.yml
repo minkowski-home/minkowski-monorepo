@@ -1,0 +1,3 @@
+# This is the docker-compose file for the infrastructure services - the databases, message brokers, etc.
+# docker-compose.ymls for apps are located in their respective service folders. This is the orchestration layer.
+# The infra/ directory may later include other infrastructure-related files, such as Terraform scripts, Kubernetes manifests, GitHub Actions workflows for infra deployment, etc.
