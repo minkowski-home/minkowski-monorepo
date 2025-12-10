@@ -1,16 +1,14 @@
 # Minkowski Monorepo
 
-This repository houses all Minkowski apps, services, shared packages, and infrastructure in a single workspace. Frontends remain Vite-based, every backend is FastAPI, and the data stack is staged to evolve from local Postgres into BigQuery and, eventually, a cloud data lake.
+This repository houses the currently active Minkowski apps plus the supporting data work that is already in motion. Frontends remain Vite-based, backends are FastAPI, and the data stack is focused on the immediate Shopify/GA4/ads needs.
 
 ## Layout
 - `apps/` – User-facing products (corporate marketing site and 3D planner), each with a React frontend and FastAPI API.
-- `services/` – Platform, ingestion, transformations, and analytics services that feed the data stack.
-- `packages/` – Shared JS/TS, Python, and asset packages to keep code and media reusable.
-- `infra/` – Terraform, Kubernetes overlays, and GitHub automation.
-- `observability/` – Dashboards, alerts, and SLO artifacts.
-- `docs/` – Product briefs, architecture notes, and runbooks.
-- `env/` – Non-secret configuration overlays for local/dev/stage (prod is injected via infra).
-- `tests/` – Cross-cutting E2E and contract tests.
+- `services/` – Active analytics and ingestion services where data work is being scoped.
+- `db/` – DDL/migrations for the warehouse surfaces that power Shopify/GA4/ads reporting.
+- `env/` – Non-secret configuration overlays for local/dev/stage.
+- `data-contracts/` & `schemas/` – Shared definitions that keep apps and services aligned.
+- `samples/` – Tiny fixtures used while the real data sources are wired up.
 
 ## Getting Started
 1. Install Node 18+ and Python 3.11+.

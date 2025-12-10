@@ -1,6 +1,0 @@
-{
-  "models": [
-    {"name": "Minimal Sofa", "file": "sofa-001.glb", "meters": {"width": 2.1, "height": 0.8, "depth": 0.9}},
-    {"name": "Accent Chair", "file": "chair-003.glb", "meters": {"width": 0.8, "height": 1.0, "depth": 0.8}}
-  ]
-}

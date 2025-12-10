@@ -1,12 +1,8 @@
-- name: data-platform
-  type: platform
+- name: analytics-platform
+  type: analytics
   owners: [data]
-  path: services/data-platform
+  path: services/analytics-platform
 - name: ingestion
   type: data
   owners: [data]
   path: services/ingestion
-- name: transformations
-  type: ml
-  owners: [ml]
-  path: services/transformations

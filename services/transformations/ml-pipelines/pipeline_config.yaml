@@ -1,5 +1,0 @@
-pipelines:
-  - name: roas_forecast
-    schedule: daily
-    feature_store: bigquery
-    trainer: vertex-ai
