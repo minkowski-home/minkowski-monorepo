@@ -1,7 +1,0 @@
-{
-  "packages": [
-    {"name": "@minkowski/ui-kit", "path": "packages/js/ui-kit"},
-    {"name": "@minkowski/eslint-config", "path": "packages/js/eslint-config"},
-    {"name": "minkowski-common", "path": "packages/python"}
-  ]
-}

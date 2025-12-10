@@ -1,7 +1,0 @@
-assets:
-  - id: glb:sofa-001
-    path: glb-models/sofa-001.glb
-    usage: design-your-space
-  - id: marketing:hero-2025
-    path: marketing-media/hero-2025.mp4
-    usage: corporate-website

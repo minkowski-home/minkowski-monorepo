@@ -1,7 +1,0 @@
-{
-  "title": "Platform Overview",
-  "panels": [
-    {"title": "API Latency", "query": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{service='api'}[5m])) by (le))"},
-    {"title": "Worker Throughput", "query": "sum(rate(worker_jobs_completed_total[5m]))"}
-  ]
-}
