@@ -1,1 +1,0 @@
-Load jobs to move staged data into modeled tables. Define warehouse load logic here.

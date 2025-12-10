@@ -1,1 +1,0 @@
-Model artifacts (ML/stat) and documentation live here. Track versions alongside pipelines.

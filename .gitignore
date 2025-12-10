@@ -36,3 +36,5 @@ coverage/
 samples/*
 !samples/README.md
 !samples/.gitignore
+data-lake/**/* 
+**/*/.gitkeep

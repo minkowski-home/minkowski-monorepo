@@ -1,9 +1,0 @@
-sources:
-  - name: spend_by_campaign
-    owner: growth-analytics
-    freshness_sla_minutes: 15
-    columns:
-      - name: campaign_id
-        description: Paid media campaign identifier.
-      - name: spend
-        description: USD spend aggregated daily.
