@@ -29,6 +29,20 @@
         "dev_command": "uvicorn app.main:app --reload",
         "port": 8001
       }
+    },
+    {
+      "slug": "employee-platform",
+      "description": "Internal surface where employees, tasks, and ops live together.",
+      "frontend": {
+        "path": "apps/employee-platform/frontend",
+        "dev_command": "npm run dev",
+        "port": 5175
+      },
+      "api": {
+        "path": "apps/employee-platform/api/backend",
+        "dev_command": "uvicorn app.main:app --reload",
+        "port": 8002
+      }
     }
   ]
 }
