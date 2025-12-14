@@ -13,14 +13,13 @@ composition, styling restraint, and micro-copy tone.
 
 ## Backend (FastAPI + MongoDB)
 
-- Requirements: Python 3.11+, MongoDB instance
-- Create a virtualenv inside `backend/` (e.g. `python -m venv .venv && source .venv/bin/activate`)
-- Install requirements: `pip install -r backend/requirements.txt`
-- Copy `.env.example` → `.env` and set `MONGODB_URI`, optional `ALLOWED_ORIGINS`, and `API_PORT`
-- Start API manually (if not using `npm run dev`): `uvicorn app.main:app --reload --port ${API_PORT:-8000}` (run from `backend/`)
-- Seed initial test data: `python -m seed.seed_test_items`
+- Requirements: Python 3.11+, the [`uv`](https://github.com/astral-sh/uv) CLI, and a MongoDB instance
+- Install dependencies: `cd apps/corporate-website/api/backend && uv sync`
+- Copy `.env.example` → `.env` inside `apps/corporate-website/api/backend/` and set `MONGODB_URI`, optional `ALLOWED_ORIGINS`, and `API_PORT`
+- Start API manually (if not using `npm run dev`): `uv run --project apps/corporate-website/api/backend uvicorn app.main:app --reload --port ${API_PORT:-8000}`
+- Seed initial test data: `uv run --project apps/corporate-website/api/backend python -m seed.seed_test_items`
 - Or seed with MongoDB Shell (after exporting `MONGODB_URI` / `MONGODB_DB`):
-  `mongosh --file backend/seed/seed_design_test.js`
+  `mongosh --file apps/corporate-website/api/backend/seed/seed_design_test.js`
 
 The API exposes:
 

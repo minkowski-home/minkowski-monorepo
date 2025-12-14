@@ -7,13 +7,14 @@ BACKEND_DIR="$SCRIPT_DIR/backend"
 
 export API_PORT="${API_PORT:-8000}"
 export MONGODB_URI="${MONGODB_URI:-mongodb://127.0.0.1:27017}"
-export MONGODB_DB="${MONGODB_DB:-minkowski_corporate}" 
+export MONGODB_DB="${MONGODB_DB:-minkowski_corporate}"
 export ALLOWED_ORIGINS="${ALLOWED_ORIGINS:-http://localhost:5173}"
 
-cd "$BACKEND_DIR"
-if [ -f .venv/bin/activate ]; then
-  source .venv/bin/activate
+if ! command -v uv >/dev/null 2>&1; then
+  echo "uv is required to run the backend. Install it from https://github.com/astral-sh/uv." >&2
+  exit 1
 fi
 
-python -m pip install -r requirements.txt >/dev/null 2>&1 || true
-exec uvicorn app.main:app --reload --port "$API_PORT"
+cd "$BACKEND_DIR"
+uv sync --frozen >/dev/null
+exec uv run uvicorn app.main:app --reload --port "$API_PORT"
