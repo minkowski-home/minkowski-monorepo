@@ -2,6 +2,17 @@ version = 1
 revision = 3
 requires-python = ">=3.11"
 
+[manifest]
+members = [
+    "backend",
+    "minkowski-monorepo",
+]
+
+[[package]]
+name = "backend"
+version = "0.1.0"
+source = { virtual = "apps/support-bot/api/backend" }
+
 [[package]]
 name = "minkowski-monorepo"
 version = "0.0.0"

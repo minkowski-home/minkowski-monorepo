@@ -11,3 +11,8 @@ exclude = ["node_modules", "dist", ".turbo", ".venv"]
 
 [tool.pytest.ini_options]
 addopts = "-q"
+
+[tool.uv.workspace]
+members = [
+    "apps/support-bot/api/backend",
+]
