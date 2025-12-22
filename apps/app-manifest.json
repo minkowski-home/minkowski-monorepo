@@ -11,8 +11,8 @@
         "port": 5173
       },
       "api": {
-        "path": "apps/corporate-website/api/backend",
-        "dev_command": "uvicorn app.main:app --reload",
+        "path": "apps/corporate-website/api/server",
+        "dev_command": "npm run dev",
         "port": 8000
       }
     },
@@ -39,8 +39,8 @@
         "port": 5175
       },
       "api": {
-        "path": "apps/employee-platform/api/backend",
-        "dev_command": "uvicorn app.main:app --reload",
+        "path": "apps/employee-platform/api/server",
+        "dev_command": "npm run dev",
         "port": 8002
       }
     }

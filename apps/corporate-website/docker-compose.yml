@@ -13,12 +13,12 @@ services:
       - "5173:5173"
 
   api:
-    image: python:3.11
-    working_dir: /workspace
-    command: ["uvicorn", "app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
+    image: node:18
+    working_dir: /workspace/api/server
+    command: ["npm", "run", "dev"]
     volumes:
-      - ./api/backend:/workspace
+      - ./api/server:/workspace/api/server
     env_file:
-      - ./api/backend/.env
+      - ./api/server/.env
     ports:
       - "8000:8000"

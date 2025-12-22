@@ -6,3 +6,7 @@
   type: data
   owners: [data]
   path: services/ingestion
+- name: ai-agents
+  type: ai
+  owners: [platform]
+  path: services/ai-agents
